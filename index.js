@@ -11,7 +11,7 @@ try {
   console.log(`The event payload: ${payload}`);
 
   // assuming issue event
-  const state = payload.issue.state;
+  const state = github.context.payload.issue.state;
   console.log(`The : ${state}`);
 } catch (error) {
   core.setFailed(error.message);
