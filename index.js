@@ -1,11 +1,12 @@
-const github = require('@actions/github');
 const core = require('@actions/core');
+const github = require('@actions/github');
 
 async function run() {
   try {
     // `limit-group` input defined in action metadata file
     const nameToGreet = core.getInput('limit-group');
-    console.log(`Hello ${nameToGreet}!`);
+    const payload = JSON.stringify(github.context.payload, undefined, 2)
+    console.log(`Hello ${github.context.repo.owner}!`);
 
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
@@ -18,20 +19,9 @@ async function run() {
 
     }
 
-    // This should be a token with access to your repository scoped in as a secret.
-    // The YML workflow will need to set myToken with the GitHub Secret Token
-    // myToken: ${{ secrets.GITHUB_TOKEN }}
-    // https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret
-    const myToken = core.getInput('myToken');
-
-    const octokit = github.getOctokit(myToken)
-
-    // You can also pass in additional options as a second parameter to getOctokit
-    // const octokit = github.getOctokit(myToken, {userAgent: "MyActionVersion1"});
-
-    const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
-        owner: github.repository_owner,
-        repo: github.repository_owner.split("/")[1],
+    const { data: restrictions } = await github.interactions.getRestrictionsForRepo({
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
     });
 
     console.log(restrictions);
