@@ -11,7 +11,7 @@ This action helps maintainers of open source projects go on vacation by limiting
 ## Example usage
 
 ```yaml
-uses: actions/vacation-mode-action@main
+uses: robotnyc/vacation-mode-action@v1
 with:
   limit-group: 'collaborators_only'
 ```
