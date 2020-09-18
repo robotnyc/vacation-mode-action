@@ -1,4 +1,7 @@
 name: 'Vacation Mode'
+branding:
+  icon: "bell-off"
+  color: gray-dark
 description: 'Limit interactions to your repository while on vacation'
 inputs:
   limit-group:
