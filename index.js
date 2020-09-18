@@ -5,7 +5,6 @@ async function run() {
   try {
     // `limit-group` input defined in action metadata file
     const nameToGreet = core.getInput('limit-group');
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`Hello ${github.context.repo.owner}!`);
 
     // Get the JSON webhook payload for the event that triggered the workflow
