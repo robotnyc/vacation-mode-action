@@ -1,23 +1,17 @@
-# Hello world JavaScript action
+# Vacation Mode JavaScript Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log. To learn how this action was built, see "[Creating a JavaScript action](https://help.github.com/en/articles/creating-a-javascript-action)" in the GitHub Help documentation.
+This action helps maintainers of open source projects go on vacation by limiting the interactions within a repository.
 
 ## Inputs
 
-### `who-to-greet`
+### `limit-group`
 
-**Required** The name of the person to greet. Default `"World"`.
-
-## Outputs
-
-### `time`
-
-The time we greeted you.
+**Required** Must be one of: `existing_users`, `contributors_only`, or `collaborators_only`. Default `"collaborators_only"`.
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-javascript-action@main
+uses: actions/vacation-mode-action@main
 with:
-  who-to-greet: 'Mona the Octocat'
+  limit-group: 'collaborators_only'
 ```

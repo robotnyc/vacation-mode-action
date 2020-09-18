@@ -1,13 +1,10 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Vacation Mode'
+description: 'Limit interactions to your repository while on vacation'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  limit-group:
+    description: 'Must be one of: existing_users, contributors_only, or collaborators_only'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: 'collaborators_only'
 runs:
   using: 'node12'
   main: 'index.js'
