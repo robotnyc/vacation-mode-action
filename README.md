@@ -4,7 +4,7 @@ This action helps maintainers of open source projects go on vacation by limiting
 
 ## Usage
 
-1. Create an issue with a title that begins with 🌴 `:palm_tree:` and contains "vacation". For example, ":palm_tree: On vacation until 2020-09-19".
+1. Create an issue with a title that begins with "🌴" and contains "vacation". For example, "🌴 On vacation until 2020-09-19".
 1. Pin the issue when it's ready so the GitHub action can pick it up and so your community can clearly see that you are on vacation.
 1. Include a description/out-of-office note in the issue explaining to your users why their contributions will be limited. See below for an example.
 
