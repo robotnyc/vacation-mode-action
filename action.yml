@@ -8,9 +8,9 @@ inputs:
     description: 'Must be one of: existing_users, contributors_only, or collaborators_only'
     required: true
     default: 'collaborators_only'
-    github-api-token:
-      description: 'GitHub API token needed to control interaction limits'
-      required: true
+  github-api-token:
+    description: 'GitHub API token needed to control interaction limits'
+    required: true
 runs:
   using: 'node12'
   main: 'index.js'
