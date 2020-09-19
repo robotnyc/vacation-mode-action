@@ -1,4 +1,4 @@
-const { Octokit } = require("@octokit/core");
+const { Octokit } = require("@octokit/rest");
 const { pinnedIssues } = require('octokit-pinned-issues');
 const core = require('@actions/core');
 const github = require('@actions/github');
