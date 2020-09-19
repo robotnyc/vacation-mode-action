@@ -35,9 +35,8 @@ For more information see the following documents
 
 ```yaml
 on:
-  # Run on issue pinned/unpinned
+  # Run on all issue activity
   issues:
-    types: [pinned, unpinned]
   # Run to reset the 24 hour interaction limit timer
   schedule:
     - cron: "0 0 * * *"
