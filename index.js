@@ -3,8 +3,6 @@ const github = require('@actions/github');
 
 async function run() {
   try {
-    // `limit-group` input defined in action metadata file
-    const nameToGreet = core.getInput('limit-group');
     console.log(`Hello ${github.context.repo.owner}!`);
 
     // Get the JSON webhook payload for the event that triggered the workflow
@@ -13,18 +11,31 @@ async function run() {
 
     // assume issue event
     const state = github.context.payload.issue.state;
-    console.log(`The : ${state}`);
+    console.log(`The issue state is: ${state}`);
     if (state === "open") {
-
+      console.log("The issue state is open");
     }
 
-    const octokit = github.getOctokit(core.getInput('github-token'));
-    const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
-        owner: github.context.repo.owner,
-        repo: github.context.repo.repo,
-    });
+    const opts = {
+      log: console, // debug
+    };
+    const octokit = github.getOctokit(core.getInput('github-token'), opts);
 
-    console.log(restrictions);
+    // Get current repo interaction restrictions
+    const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
+      mediaType: {
+        previews: [
+          'sombra'
+        ],
+      }
+    });
+    console.log(JSON.stringify(restrictions, undefined, 2));
+
+    // if the pinned issue is open update the repository interaction restrictions
+    const limit_group = core.getInput('limit-group');
+
   } catch (error) {
     core.setFailed(error.message);
   }
