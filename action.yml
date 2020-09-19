@@ -1,13 +1,17 @@
 name: 'Vacation Mode'
 branding:
-  icon: "bell-off"
-  color: gray-dark
+  icon: 'sun'
+  color: 'yellow'
 description: 'Limit interactions to your repository while on vacation'
 inputs:
   limit-group:
     description: 'Must be one of: existing_users, contributors_only, or collaborators_only'
     required: true
     default: 'collaborators_only'
+  github-api-token:
+    description: 'GitHub API token needed to control interaction limits'
+    required: true
+    default: ${{ secrets.GITHUB_TOKEN }}
 runs:
   using: 'node12'
   main: 'index.js'
