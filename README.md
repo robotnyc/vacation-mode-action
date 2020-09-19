@@ -31,7 +31,7 @@ For more information see the following documents
 * GitHub API available scopes: https://docs.github.com/en/developers/apps/scopes-for-oauth-apps#available-scopes
 * GitHub API Actions scopes: https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token
 
-## Example usage
+## Setup
 
 ```yaml
 on:
