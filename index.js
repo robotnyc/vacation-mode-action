@@ -9,18 +9,10 @@ async function run() {
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);
 
-    // assume issue event
-    const state = github.context.payload.issue.state;
-    console.log(`The issue state is: ${state}`);
-    if (state === "open") {
-      console.log("The issue state is open");
-    }
-
     const opts = {
       log: console, // debug
     };
     const octokit = github.getOctokit(core.getInput('personal-access-token'), opts);
-
 
     // Get recently updated open issues
     const { data: issues } = await octokit.issues.listForRepo({
@@ -30,6 +22,12 @@ async function run() {
       sort: "updated",
     });
     console.log(JSON.stringify(issues, undefined, 2));
+
+    console.log(issues.length);
+    for (let issue of issues) {
+      console.log(issue.title);
+      console.log(issue.state);;
+    }
 
     // Get current repo interaction restrictions
     const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
