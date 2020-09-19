@@ -23,8 +23,9 @@ async function run() {
 
 
     // Get recently updated open issues
-    const { data: issues } = await octokit.issues.list({
-      filter: "all",
+    const { data: issues } = await octokit.issues.listForRepo({
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
       state: "open",
       sort: "updated",
     });
