@@ -9,7 +9,7 @@ inputs:
     required: true
     default: 'collaborators_only'
   personal-access-token:
-    description: 'GitHub API personal access token (with scope repo) needed to control repository interaction limits'
+    description: 'GitHub API personal access token with repo scope is needed to control repository interaction limits'
     required: true
 runs:
   using: 'node12'
