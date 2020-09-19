@@ -1,15 +1,14 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { GitHub, getOctokitOptions } = require('@actions/github/lib/utils');
-const { pinnedIssues } = require('octokit-pinned-issues');
+const Octokit = require('@octokit/rest')
+  .plugin(require('octokit-pinned-issues'))
 
 async function run() {
   try {
     const limit_group = core.getInput('limit-group');
     on_vacation = false;
 
-    const myOctokit = GitHub.plugin(pinnedIssues)
-    const octokit = new myOctokit(getOctokitOptions(core.getInput('personal-access-token')))
+    const octokit = new Octokit(getOctokitOptions(core.getInput('personal-access-token')))
 
     // Get pinned issues
     const { data: issues } = await octokit.getPinnedIssues({
