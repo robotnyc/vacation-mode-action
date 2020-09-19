@@ -1,6 +1,6 @@
 # Vacation Mode JavaScript Action
 
-This action helps maintainers of open source projects go on vacation and take mental health breaks by limiting community interactions within a repository. During this time commenting, opening issues, or creating pull requests will be limited to a defined group.
+This action helps maintainers of open source projects go on vacation and take mental health breaks by limiting community interactions within a repository. During this time, commenting, opening issues, or creating pull requests will be limited to a defined group.
 
 This action uses the [interaction limit feature](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository). The issue with this feature is it only can be enabled for 24 hours. This action works around this _limitation_ in a way that hopefully makes it easier for the project maintainer and for the community.
 
