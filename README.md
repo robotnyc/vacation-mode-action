@@ -1,8 +1,9 @@
 # Vacation Mode JavaScript Action
 
-This action helps maintainers of open source projects go on vacation and take mental health breaks by limiting community interactions within a repository. During this time, commenting, opening issues, or creating pull requests will be limited to a defined group.
+This GitHub Action helps maintainers of open source projects go on vacation and take mental health breaks by limiting community inter
+s within a repository. During this time, commenting, opening issues, or creating pull requests will be limited to a defined group.
 
-This action uses the [interaction limit feature](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository). The issue with this feature is it only can be enabled for 24 hours. This action works around this _limitation_ in a way that hopefully makes it easier for the project maintainer and for the community.
+This GitHub Action avoids the 24 hour limit of the GitHub repository [interactions limit](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository) feature. This makes it easier for the project maintainers and more transperant for the community.
 
 Inspired by [@mrdoob](https://github.com/mrdoob)'s, maintainer of [three.js](https://github.com/mrdoob/three.js), feature request https://twitter.com/mrdoob/status/1305989856368234496 .
 
@@ -29,7 +30,7 @@ Groups are defines as follows:
 
 ### `personal-access-token`
 
-A personal access token is required because the GitHub API token generated for actions does not include the `repo` scope necessary to control the repository interaction limits.
+A personal access token is required because the GitHub API token generated for GitHub Actions does not include the `repo` scope necessary to control the repository interaction limits.
 
 1. Go to https://github.com/settings/tokens and create a personal access token named `vacation-mode` (name is not important) with the `repo` scope.
 1. Copy the token value.
@@ -42,7 +43,7 @@ For more information see the following documents
 
 ## Setup
 
-To enable this action, add the following to `.github/workflows/main.yml`.
+To enable this GitHub Actions, add the following to `.github/workflows/main.yml`.
 
 ```yaml
 on:
