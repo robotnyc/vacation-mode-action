@@ -2,6 +2,8 @@
 
 This action helps maintainers of open source projects go on vacation by limiting community interactions within a repository. During this time commenting, opening issues, or creating pull requests will be limited to a defined group.
 
+This action uses the [interaction limit feature](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository). The issue with this feature is it only can be enabled for 24 hours. This action works around this in a way that hopefully makes it easier for the project maintainer and for the community.
+
 ## Usage
 
 1. Create an issue with a title that contains "vacation". For example, "🌴 On Vacation Next Week".
@@ -16,7 +18,7 @@ _Your contributions are very valuable so please subscribe to this issue and get 
 
 ### `limit-group`
 
-Groups are defines as follows (see https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository):
+Groups are defines as follows:
 * Limit to **existing users**: Limits activity for users with accounts that are less than 24 hours old who do not have prior contributions and are not collaborators.
 * Limit to prior **contributors**: Limits activity for users who have not previously contributed and are not collaborators.
 * Limit to repository **collaborators**: Limits activity for users who do not have write access or are not collaborators.
