@@ -19,7 +19,7 @@ async function run() {
     const opts = {
       log: console, // debug
     };
-    const octokit = github.getOctokit(core.getInput('github-token'), opts);
+    const octokit = github.getOctokit(core.getInput('github-api-token'), opts);
 
     // Get current repo interaction restrictions
     const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
