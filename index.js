@@ -14,7 +14,7 @@ async function run() {
 
     // Find open and pinned "vacation" issue
     on_vacation = false;
-    const { data: issues } = await octokit.getPinnedIssues({
+    const issues = await octokit.getPinnedIssues({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
     });
