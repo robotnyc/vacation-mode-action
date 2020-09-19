@@ -2,6 +2,16 @@
 
 This action helps maintainers of open source projects go on vacation by limiting the interactions within a repository.
 
+## Usage
+
+1. Create an issue with a title that begins with `:palm_tree:` and contains "vacation". For example, ":palm_tree: On vacation until 2020-09-19".
+1. Pin the issue when it's ready so the GitHub action can pick it up and so your community can clearly see that you are on vacation.
+1. Include a description/out-of-office note in the issue explaining to your users why their contributions will be limited. See below for an example.
+
+_Dear community, as the maintainer of this project, I have put the repository in "vacation mode" so that I can take a much deserved break without worrying about tasks piling up while I'm recharging. I hope you can understand the need to take this action and not just "turn off notifications". Anyone who has experienced a company wide shutdown would understand, that it's much easier to disconnect from work when everyone does at the same time._
+
+_Your contributions are very valuable so please subscribe to this issue and get notified I'm back and ready to resume actively maintaining this project._
+
 ## Inputs
 
 ### `limit-group`
