@@ -18,19 +18,15 @@ async function run() {
       state: "open",
       sort: "updated",
     });
-    console.log(JSON.stringify(issues, undefined, 2));
 
-    console.log(issues.length);
     for (let issue of issues) {
-      console.log(issue.title);
-      console.log(issue.state);
       if (issue.title.startsWith('🌴') && issue.title.toLowerCase().includes('vacation')) {
         on_vacation = true;
+        break;
       }
     }
 
-    // Remove repo interaction restrictions
-    // Always done first in order to reset the interaction limit 24 hour timer
+    // Always remove repo interaction restrictions first in order to reset the interaction limit 24 hour timer
     await octokit.interactions.removeRestrictionsForRepo({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
@@ -42,7 +38,7 @@ async function run() {
     });
 
     if (on_vacation) {
-      console.log(":palm_tree: Enjoy your vacation!");
+      console.log("🌴 Enjoy your vacation!");
 
       // Set repo interaction restrictions
       await octokit.interactions.setRestrictionsForRepo({
@@ -56,19 +52,6 @@ async function run() {
         limit: limit_group,
       });
     }
-
-    // DEBUG Get current repo interaction restrictions
-    const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
-      mediaType: {
-        previews: [
-          'sombra'
-        ],
-      },
-    });
-    console.log(JSON.stringify(restrictions, undefined, 2));
-
   } catch (error) {
     core.setFailed(error.message);
   }
