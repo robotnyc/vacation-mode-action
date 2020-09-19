@@ -18,7 +18,8 @@ async function run() {
 
     }
 
-    const { data: restrictions } = await github.interactions.getRestrictionsForRepo({
+    const octokit = github.getOctokit(core.getInput('github-token'));
+    const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
     });
