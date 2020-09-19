@@ -4,14 +4,11 @@ const github = require('@actions/github');
 async function run() {
   try {
     on_vacation = false;
-    // Get the JSON webhook payload for the event that triggered the workflow
-    // const payload = JSON.stringify(github.context.payload, undefined, 2)
-    // console.log(`The event payload: ${payload}`);
-
     const opts = {
       log: console, // debug
     };
     const octokit = github.getOctokit(core.getInput('personal-access-token'), opts);
+    const limit_group = core.getInput('limit-group');
 
     // Get recently updated open issues
     // TODO replace with octokit-pinned-issues plugin pinnedIssues query since it's limited to 3 issues max
@@ -32,22 +29,20 @@ async function run() {
       }
     }
 
-    // Get current repo interaction restrictions
-    const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
+    // Remove repo interaction restrictions
+    // Always done first in order to reset the interaction limit 24 hour timer
+    await octokit.interactions.removeRestrictionsForRepo({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       mediaType: {
         previews: [
           'sombra'
         ],
-      }
+      },
     });
-    console.log(JSON.stringify(restrictions, undefined, 2));
 
     if (on_vacation) {
       console.log(":palm_tree: Enjoy your vacation!");
-
-      const limit_group = core.getInput('limit-group');
 
       // Set repo interaction restrictions
       await octokit.interactions.setRestrictionsForRepo({
@@ -60,20 +55,9 @@ async function run() {
         },
         limit: limit_group,
       });
-    } else {
-      // Remove repo interaction restrictions
-      await octokit.interactions.removeRestrictionsForRepo({
-        owner: github.context.repo.owner,
-        repo: github.context.repo.repo,
-        mediaType: {
-          previews: [
-            'sombra'
-          ],
-        },
-      });
     }
 
-    // Get current repo interaction restrictions
+    // DEBUG Get current repo interaction restrictions
     const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
