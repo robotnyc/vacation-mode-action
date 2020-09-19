@@ -20,7 +20,7 @@ _Know that your contributions are valuable and appreciated, so please subscribe 
 
 ### `limit-group`
 
-Groups are defines as follows:
+Groups are defined as follows:
 * Limit to **existing users**: Limits activity for users with accounts that are less than 24 hours old who do not have prior contributions and are not collaborators.
 * Limit to prior **contributors**: Limits activity for users who have not previously contributed and are not collaborators.
 * Limit to repository **collaborators**: Limits activity for users who do not have write access or are not collaborators.
