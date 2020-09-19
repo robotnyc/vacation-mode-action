@@ -24,9 +24,7 @@ async function run() {
     for (let issue of issues) {
       console.log(issue.title);
       console.log(issue.state);
-      console.log(issue.title.startsWith(':palm_tree:'));
-      console.log(issue.title.toLowerCase().includes('vacation'));
-      if (issue.title.startsWith(':palm_tree:') && issue.title.toLowerCase().includes('vacation')) {
+      if (issue.title.startsWith('🌴') && issue.title.toLowerCase().includes('vacation')) {
         on_vacation = true;
       }
     }
