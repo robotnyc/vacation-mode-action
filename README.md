@@ -4,6 +4,8 @@ This action helps maintainers of open source projects go on vacation by limiting
 
 This action uses the [interaction limit feature](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository). The issue with this feature is it only can be enabled for 24 hours. This action works around this in a way that hopefully makes it easier for the project maintainer and for the community.
 
+Inspired by [@mrdoob](https://github.com/mrdoob), maintainer of [three.js](https://github.com/mrdoob/three.js), feature request https://twitter.com/mrdoob/status/1305989856368234496 .
+
 ## Usage
 
 1. Create an issue with a title that contains "vacation". For example, "🌴 On Vacation Next Week".
