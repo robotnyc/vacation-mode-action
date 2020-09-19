@@ -14,11 +14,11 @@ async function run() {
 
     // Find open and pinned "vacation" issue
     on_vacation = false;
-    const issues = await octokit.getPinnedIssues({
+    await octokit.getPinnedIssues({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
-    });
-    console.log(JSON.stringify(issues, undefined, 2));
+    }).then(issues => console.log(JSON.stringify(issues, undefined, 2)));
+
     for (let issue of issues) {
       if (issue.state == "open" && issue.title.toLowerCase().includes('vacation')) {
         on_vacation = true;
