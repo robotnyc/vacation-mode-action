@@ -1,13 +1,13 @@
+'use strict';
+
 const core = require('@actions/core');
 const github = require('@actions/github');
+const pinnedIssues = require('octokit-pinned-issues');
 
 async function run() {
   try {
     on_vacation = false;
-    const opts = {
-      log: console, // debug
-    };
-    const octokit = github.getOctokit(core.getInput('personal-access-token'), opts);
+    const octokit = github.GitHub(core.getInput('personal-access-token'));
     const limit_group = core.getInput('limit-group');
 
     // Get recently updated open issues

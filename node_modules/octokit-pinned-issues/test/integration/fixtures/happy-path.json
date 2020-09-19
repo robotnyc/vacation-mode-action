@@ -1,0 +1,446 @@
+[
+  {
+    "request": {
+      "method": "POST",
+      "baseUrl": "https://api.github.com",
+      "headers": {
+        "accept": "application/vnd.github.elektra-preview+json",
+        "user-agent": "octokit.js/16.2.0 Node.js/10.13.0 (macOS Mojave; x64)",
+        "authorization": "token secret123",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "request": {},
+      "url": "/graphql",
+      "query": "query getPinnedIssues($repo: String!, $owner: String!) {\n  repository(owner: $owner, name: $repo) {\n    pinnedIssues(first: 3) {\n      nodes {\n        issue {\n          ...issueInfo\n        }\n      }\n    }\n  }\n}\n\nfragment issueInfo on Issue {\n  id\n  number\n  state\n  title\n  body\n  labels(first: 100) {\n    nodes {\n      id\n      name\n      description\n      color\n    }\n  }\n  assignees(first: 100) {\n    nodes {\n      login\n      id\n      avatarUrl\n    }\n  }\n  milestone {\n    id\n    state\n    title\n    description\n  }\n  locked\n  activeLockReason\n}",
+      "variables": {
+        "owner": "gr2m",
+        "repo": "octokit-pinned-issues-fixtures"
+      }
+    },
+    "response": {
+      "data": {
+        "data": {
+          "repository": {
+            "pinnedIssues": {
+              "nodes": []
+            }
+          }
+        }
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+        "cache-control": "no-cache",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 16 Dec 2018 21:13:20 GMT",
+        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "server": "GitHub.com",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-accepted-oauth-scopes": "repo",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "deny",
+        "x-github-media-type": "github.elektra-preview; format=json",
+        "x-github-request-id": "F021:0C81:41C68CE:54F33FA:5C16BFF0",
+        "x-oauth-scopes": "delete_repo, public_repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4967",
+        "x-ratelimit-reset": "1544997265",
+        "x-xss-protection": "1; mode=block"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "baseUrl": "https://api.github.com",
+      "headers": {
+        "accept": "application/vnd.github.v3+json",
+        "user-agent": "octokit.js/16.2.0 Node.js/10.13.0 (macOS Mojave; x64)",
+        "authorization": "token secret123",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "request": {},
+      "url": "/graphql",
+      "query": "query getIssue($repo: String!, $owner: String!, $number: Int!) {\n  repository(owner: $owner, name: $repo) {\n    issue(number:$number) {\n      id\n    }\n  }\n}",
+      "variables": {
+        "owner": "gr2m",
+        "repo": "octokit-pinned-issues-fixtures",
+        "number": 1
+      }
+    },
+    "response": {
+      "data": {
+        "data": {
+          "repository": {
+            "issue": {
+              "id": "MDU6SXNzdWUzOTE1MDU2MTU="
+            }
+          }
+        }
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+        "cache-control": "no-cache",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 16 Dec 2018 21:13:21 GMT",
+        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "server": "GitHub.com",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-accepted-oauth-scopes": "repo",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "deny",
+        "x-github-media-type": "github.v3; format=json",
+        "x-github-request-id": "F022:0C7F:1FFAA38:28FDD76:5C16BFF0",
+        "x-oauth-scopes": "delete_repo, public_repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4966",
+        "x-ratelimit-reset": "1544997265",
+        "x-xss-protection": "1; mode=block"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "baseUrl": "https://api.github.com",
+      "headers": {
+        "accept": "application/vnd.github.elektra-preview+json",
+        "user-agent": "octokit.js/16.2.0 Node.js/10.13.0 (macOS Mojave; x64)",
+        "authorization": "token secret123",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "request": {},
+      "url": "/graphql",
+      "query": "mutation pinIssue($id: ID!) {\n  pinIssue(input: {issueId: $id}) {\n    issue {\n      ...issueInfo\n    }\n  }\n}\n\nfragment issueInfo on Issue {\n  id\n  number\n  state\n  title\n  body\n  labels(first: 100) {\n    nodes {\n      id\n      name\n      description\n      color\n    }\n  }\n  assignees(first: 100) {\n    nodes {\n      login\n      id\n      avatarUrl\n    }\n  }\n  milestone {\n    id\n    state\n    title\n    description\n  }\n  locked\n  activeLockReason\n}",
+      "variables": {
+        "id": "MDU6SXNzdWUzOTE1MDU2MTU="
+      }
+    },
+    "response": {
+      "data": {
+        "data": {
+          "pinIssue": {
+            "issue": {
+              "id": "MDU6SXNzdWUzOTE1MDU2MTU=",
+              "number": 1,
+              "state": "OPEN",
+              "title": "test issue",
+              "body": "",
+              "labels": {
+                "nodes": []
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "milestone": null,
+              "locked": false,
+              "activeLockReason": null
+            }
+          }
+        }
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+        "cache-control": "no-cache",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 16 Dec 2018 21:13:21 GMT",
+        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "server": "GitHub.com",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-accepted-oauth-scopes": "repo",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "deny",
+        "x-github-media-type": "github.elektra-preview; format=json",
+        "x-github-request-id": "F023:0C81:41C68FF:54F3439:5C16BFF1",
+        "x-oauth-scopes": "delete_repo, public_repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4965",
+        "x-ratelimit-reset": "1544997265",
+        "x-xss-protection": "1; mode=block"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "baseUrl": "https://api.github.com",
+      "headers": {
+        "accept": "application/vnd.github.elektra-preview+json",
+        "user-agent": "octokit.js/16.2.0 Node.js/10.13.0 (macOS Mojave; x64)",
+        "authorization": "token secret123",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "request": {},
+      "url": "/graphql",
+      "query": "query getPinnedIssues($repo: String!, $owner: String!) {\n  repository(owner: $owner, name: $repo) {\n    pinnedIssues(first: 3) {\n      nodes {\n        issue {\n          ...issueInfo\n        }\n      }\n    }\n  }\n}\n\nfragment issueInfo on Issue {\n  id\n  number\n  state\n  title\n  body\n  labels(first: 100) {\n    nodes {\n      id\n      name\n      description\n      color\n    }\n  }\n  assignees(first: 100) {\n    nodes {\n      login\n      id\n      avatarUrl\n    }\n  }\n  milestone {\n    id\n    state\n    title\n    description\n  }\n  locked\n  activeLockReason\n}",
+      "variables": {
+        "owner": "gr2m",
+        "repo": "octokit-pinned-issues-fixtures"
+      }
+    },
+    "response": {
+      "data": {
+        "data": {
+          "repository": {
+            "pinnedIssues": {
+              "nodes": [
+                {
+                  "issue": {
+                    "id": "MDU6SXNzdWUzOTE1MDU2MTU=",
+                    "number": 1,
+                    "state": "OPEN",
+                    "title": "test issue",
+                    "body": "",
+                    "labels": {
+                      "nodes": []
+                    },
+                    "assignees": {
+                      "nodes": []
+                    },
+                    "milestone": null,
+                    "locked": false,
+                    "activeLockReason": null
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+        "cache-control": "no-cache",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 16 Dec 2018 21:13:21 GMT",
+        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "server": "GitHub.com",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-accepted-oauth-scopes": "repo",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "deny",
+        "x-github-media-type": "github.elektra-preview; format=json",
+        "x-github-request-id": "F024:0C81:41C691C:54F3464:5C16BFF1",
+        "x-oauth-scopes": "delete_repo, public_repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4964",
+        "x-ratelimit-reset": "1544997265",
+        "x-xss-protection": "1; mode=block"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "baseUrl": "https://api.github.com",
+      "headers": {
+        "accept": "application/vnd.github.v3+json",
+        "user-agent": "octokit.js/16.2.0 Node.js/10.13.0 (macOS Mojave; x64)",
+        "authorization": "token secret123",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "request": {},
+      "url": "/graphql",
+      "query": "query getIssue($repo: String!, $owner: String!, $number: Int!) {\n  repository(owner: $owner, name: $repo) {\n    issue(number:$number) {\n      id\n    }\n  }\n}",
+      "variables": {
+        "owner": "gr2m",
+        "repo": "octokit-pinned-issues-fixtures",
+        "number": 1
+      }
+    },
+    "response": {
+      "data": {
+        "data": {
+          "repository": {
+            "issue": {
+              "id": "MDU6SXNzdWUzOTE1MDU2MTU="
+            }
+          }
+        }
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+        "cache-control": "no-cache",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 16 Dec 2018 21:13:22 GMT",
+        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "server": "GitHub.com",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-accepted-oauth-scopes": "repo",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "deny",
+        "x-github-media-type": "github.v3; format=json",
+        "x-github-request-id": "F025:0C83:4DD4EBC:6471F63:5C16BFF1",
+        "x-oauth-scopes": "delete_repo, public_repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4963",
+        "x-ratelimit-reset": "1544997265",
+        "x-xss-protection": "1; mode=block"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "baseUrl": "https://api.github.com",
+      "headers": {
+        "accept": "application/vnd.github.elektra-preview+json",
+        "user-agent": "octokit.js/16.2.0 Node.js/10.13.0 (macOS Mojave; x64)",
+        "authorization": "token secret123",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "request": {},
+      "url": "/graphql",
+      "query": "mutation unpinIssue($id: ID!) {\n  unpinIssue(input: {issueId: $id}) {\n    issue {\n      ...issueInfo\n    }\n  }\n}\n\nfragment issueInfo on Issue {\n  id\n  number\n  state\n  title\n  body\n  labels(first: 100) {\n    nodes {\n      id\n      name\n      description\n      color\n    }\n  }\n  assignees(first: 100) {\n    nodes {\n      login\n      id\n      avatarUrl\n    }\n  }\n  milestone {\n    id\n    state\n    title\n    description\n  }\n  locked\n  activeLockReason\n}",
+      "variables": {
+        "id": "MDU6SXNzdWUzOTE1MDU2MTU="
+      }
+    },
+    "response": {
+      "data": {
+        "data": {
+          "unpinIssue": {
+            "issue": {
+              "id": "MDU6SXNzdWUzOTE1MDU2MTU=",
+              "number": 1,
+              "state": "OPEN",
+              "title": "test issue",
+              "body": "",
+              "labels": {
+                "nodes": []
+              },
+              "assignees": {
+                "nodes": []
+              },
+              "milestone": null,
+              "locked": false,
+              "activeLockReason": null
+            }
+          }
+        }
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+        "cache-control": "no-cache",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 16 Dec 2018 21:13:22 GMT",
+        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "server": "GitHub.com",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-accepted-oauth-scopes": "repo",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "deny",
+        "x-github-media-type": "github.elektra-preview; format=json",
+        "x-github-request-id": "F026:0C83:4DD4ED1:6471F7F:5C16BFF2",
+        "x-oauth-scopes": "delete_repo, public_repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4962",
+        "x-ratelimit-reset": "1544997265",
+        "x-xss-protection": "1; mode=block"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "baseUrl": "https://api.github.com",
+      "headers": {
+        "accept": "application/vnd.github.elektra-preview+json",
+        "user-agent": "octokit.js/16.2.0 Node.js/10.13.0 (macOS Mojave; x64)",
+        "authorization": "token secret123",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "request": {},
+      "url": "/graphql",
+      "query": "query getPinnedIssues($repo: String!, $owner: String!) {\n  repository(owner: $owner, name: $repo) {\n    pinnedIssues(first: 3) {\n      nodes {\n        issue {\n          ...issueInfo\n        }\n      }\n    }\n  }\n}\n\nfragment issueInfo on Issue {\n  id\n  number\n  state\n  title\n  body\n  labels(first: 100) {\n    nodes {\n      id\n      name\n      description\n      color\n    }\n  }\n  assignees(first: 100) {\n    nodes {\n      login\n      id\n      avatarUrl\n    }\n  }\n  milestone {\n    id\n    state\n    title\n    description\n  }\n  locked\n  activeLockReason\n}",
+      "variables": {
+        "owner": "gr2m",
+        "repo": "octokit-pinned-issues-fixtures"
+      }
+    },
+    "response": {
+      "data": {
+        "data": {
+          "repository": {
+            "pinnedIssues": {
+              "nodes": []
+            }
+          }
+        }
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+        "cache-control": "no-cache",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sun, 16 Dec 2018 21:13:22 GMT",
+        "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "server": "GitHub.com",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-accepted-oauth-scopes": "repo",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "deny",
+        "x-github-media-type": "github.elektra-preview; format=json",
+        "x-github-request-id": "F027:0C7F:1FFAA78:28FDDCE:5C16BFF2",
+        "x-oauth-scopes": "delete_repo, public_repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4961",
+        "x-ratelimit-reset": "1544997265",
+        "x-xss-protection": "1; mode=block"
+      }
+    }
+  }
+]
