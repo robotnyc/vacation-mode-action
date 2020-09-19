@@ -4,7 +4,7 @@ This GitHub Action helps maintainers of open source projects go on vacation and 
 
 This GitHub Action avoids the 24 hour limit of the GitHub repository [interactions limit](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository) feature. This makes it easier for the project maintainers and more transparent for the community.
 
-Inspired by [@mrdoob](https://github.com/mrdoob)'s, maintainer of [three.js](https://github.com/mrdoob/three.js), feature request https://twitter.com/mrdoob/status/1305989856368234496 .
+Inspired by [@mrdoob's](https://github.com/mrdoob), maintainer of [three.js](https://github.com/mrdoob/three.js), feature request https://twitter.com/mrdoob/status/1305989856368234496 .
 
 ## Usage
 
