@@ -17,14 +17,15 @@ async function run() {
     await octokit.getPinnedIssues({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
-    }).then(issues => console.log(JSON.stringify(issues, undefined, 2)));
-
-    for (let issue of issues) {
-      if (issue.state == "open" && issue.title.toLowerCase().includes('vacation')) {
-        on_vacation = true;
-        break;
+    }).then(issues => {
+      console.log(JSON.stringify(issues, undefined, 2))
+      for (let issue of issues) {
+        if (issue.state.toLowerCase() == "open" && issue.title.toLowerCase().includes('vacation')) {
+          on_vacation = true;
+          break;
+        }
       }
-    }
+    });
 
     // Always remove repo interaction restrictions first in order to reset the interaction limit 24 hour timer
     await octokit.interactions.removeRestrictionsForRepo({
