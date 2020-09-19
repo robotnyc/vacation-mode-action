@@ -1,7 +1,6 @@
 # Vacation Mode JavaScript Action
 
-This GitHub Action helps maintainers of open source projects go on vacation and take mental health breaks by limiting community inter
-s within a repository. During this time, commenting, opening issues, or creating pull requests will be limited to a defined group.
+This GitHub Action helps maintainers of open source projects go on vacation and take mental health breaks by limiting community interactions within a repository. During this time, commenting, opening issues, or creating pull requests will be limited to a defined group.
 
 This GitHub Action avoids the 24 hour limit of the GitHub repository [interactions limit](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository) feature. This makes it easier for the project maintainers and more transperant for the community.
 
@@ -13,7 +12,7 @@ Inspired by [@mrdoob](https://github.com/mrdoob)'s, maintainer of [three.js](htt
 1. Pin the issue so your community can clearly see that you are on vacation.
 1. Include a description/out-of-office note in the issue explaining to your community why their interactions will be limited. See below for an example.
 
-_Dear community, as the maintainer of this project, I have put the repository in "vacation mode" so that I can take a much needed and deserved break without worrying about tasks piling up while I recharge. I hope you can understand the need to take this action and not just "turn off notifications". Anyone who has experienced a company wide shutdown would understand, that it's much easier to disconnect from work when everyone does at the same time._
+_Dear community, as the maintainer of this project, I have put the repository in "vacation mode" so that I can take a much needed and deserved break without worrying about tasks piling up while I recharge. I hope you can understand the need to take this action and not just "turn off notifications". Anyone who has experienced a company-wide shutdown would understand, that it's much easier to disconnect from work when everyone does at the same time._
 
 _Know that your contributions are valuable and appreciated, so please subscribe to this issue and get notified when I'm back and ready to resume actively maintaining this project._
 
