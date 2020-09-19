@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-import { GitHub, getOctokitOptions } from '@actions/github/lib/utils';
-import { pinnedIssues } from 'octokit-pinned-issues';
+const { GitHub, getOctokitOptions } = require('@actions/github/lib/utils');
+const { pinnedIssues } = require('octokit-pinned-issues');
 
 async function run() {
   try {
