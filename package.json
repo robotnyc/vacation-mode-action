@@ -1,22 +1,22 @@
 {
-  "name": "hello-world-javascript-action",
+  "name": "vacation-mode-action",
   "version": "1.0.0",
-  "description": "This action prints \"Hello World\" or \"Hello\" + the name of a person to greet to the log.",
+  "description": "This action limit interactions to your repository while on vacation.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/hello-world-javascript-action.git"
+    "url": "git+https://github.com/robotnyc/vacation-mode-action.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/actions/hello-world-javascript-action/issues"
+    "url": "https://github.com/robotnyc/vacation-mode-action/issues"
   },
-  "homepage": "https://github.com/actions/hello-world-javascript-action#readme",
+  "homepage": "https://github.com/robotnyc/vacation-mode-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.5",
     "@actions/github": "^1.1.0"
