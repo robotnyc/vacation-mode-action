@@ -18,6 +18,7 @@ async function run() {
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
     });
+    console.log(JSON.stringify(issues, undefined, 2));
     for (let issue of issues) {
       if (issue.state == "open" && issue.title.toLowerCase().includes('vacation')) {
         on_vacation = true;
