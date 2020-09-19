@@ -37,7 +37,7 @@ For more information see the following documents
 on:
   # Run on all issue activity
   issues:
-  # Run to reset the 24 hour interaction limit timer
+  # Run daily to reset the 24 hour interaction limit timer as needed
   schedule:
     - cron: "0 0 * * *"
 
