@@ -11,7 +11,21 @@ This action helps maintainers of open source projects go on vacation by limiting
 ## Example usage
 
 ```yaml
-uses: robotnyc/vacation-mode-action@v1
-with:
-  limit-group: 'collaborators_only'
+on:
+  # Run on issue pinned/unpinned
+  issues:
+    types: [pinned, unpinned]
+  # Run to reset the 24 hour interaction limit timer
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  vacation_mode_job:
+    runs-on: ubuntu-latest
+    name: Update Vacation Mode
+    steps:
+    - uses: robotnyc/vacation-mode-action@v1
+      with:
+        limit-group: 'collaborators_only'
+        github-api-token: ${{ secrets.GITHUB_TOKEN }}
 ```
