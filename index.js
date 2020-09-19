@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const Octokit = require("@octokit/core");
-const pinnedIssues = require('octokit-pinned-issues');
+const { Octokit } = require("@octokit/core");
+const { pinnedIssues } = require('octokit-pinned-issues');
 
 async function run() {
   try {
