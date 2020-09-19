@@ -1,17 +1,16 @@
-const { Octokit } = require("@octokit/rest");
-const { pinnedIssues } = require('octokit-pinned-issues');
-const core = require('@actions/core');
+const { Octokit } = require("@octokit/core");
+const MyOctokit = Octokit.plugin(
+  require('octokit-pinned-issues')
+);const core = require('@actions/core');
 const github = require('@actions/github');
+const octokit = new MyOctokit({
+  auth: token,
+});
 
 async function run() {
   try {
     const limit_group = core.getInput('limit-group');
     const token = core.getInput('personal-access-token');
-
-    const MyOctokit = Octokit.plugin(pinnedIssues);
-    const octokit = new MyOctokit({
-      auth: token,
-    });
 
     // Find open and pinned "vacation" issue
     on_vacation = false;
