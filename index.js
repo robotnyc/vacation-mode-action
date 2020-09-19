@@ -6,21 +6,20 @@ const pinnedIssues = require('octokit-pinned-issues');
 
 async function run() {
   try {
-    on_vacation = false;
-    const octokit = github.GitHub(core.getInput('personal-access-token'));
     const limit_group = core.getInput('limit-group');
+    on_vacation = false;
 
-    // Get recently updated open issues
-    // TODO replace with octokit-pinned-issues plugin pinnedIssues query since it's limited to 3 issues max
-    const { data: issues } = await octokit.issues.listForRepo({
+    const myOctokit = github.GitHub.plugin(pinnedIssues);
+    const octokit = new myOctokit(core.getInput('personal-access-token'))
+
+    // Get pinned issues
+    const { data: issues } = await octokit.getPinnedIssues({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
-      state: "open",
-      sort: "updated",
     });
 
     for (let issue of issues) {
-      if (issue.title.startsWith('🌴') && issue.title.toLowerCase().includes('vacation')) {
+      if (issue.state == "open" && issue.title.toLowerCase().includes('vacation')) {
         on_vacation = true;
         break;
       }
