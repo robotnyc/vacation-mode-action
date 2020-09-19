@@ -21,6 +21,15 @@ async function run() {
     };
     const octokit = github.getOctokit(core.getInput('personal-access-token'), opts);
 
+
+    // Get recently updated open issues
+    const { data: issues } = await octokit.issues.list({
+      filter: "all",
+      state: "open",
+      sort: "updated",
+    });
+    console.log(JSON.stringify(issues, undefined, 2));
+
     // Get current repo interaction restrictions
     const { data: restrictions } = await octokit.interactions.getRestrictionsForRepo({
       owner: github.context.repo.owner,
