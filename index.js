@@ -1,21 +1,24 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const Octokit = require('@octokit/rest')
-  .plugin(require('octokit-pinned-issues'))
+const Octokit = require('@octokit/rest');
+const pinnedIssues = require('octokit-pinned-issues');
 
 async function run() {
   try {
     const limit_group = core.getInput('limit-group');
+    const token = core.getInput('personal-access-token');
+
+    const MyOctokit = Octokit.plugin(pinnedIssues);
+    const octokit = new MyOctokit({
+      auth: token,
+    });
+
+    // Find open and pinned "vacation" issue
     on_vacation = false;
-
-    const octokit = new Octokit(getOctokitOptions(core.getInput('personal-access-token')))
-
-    // Get pinned issues
     const { data: issues } = await octokit.getPinnedIssues({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
     });
-
     for (let issue of issues) {
       if (issue.state == "open" && issue.title.toLowerCase().includes('vacation')) {
         on_vacation = true;
