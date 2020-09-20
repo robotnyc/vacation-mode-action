@@ -11,7 +11,8 @@ async function run() {
     const limit_group = core.getInput('limit-group');
 
     // Find open and pinned "vacation" issue
-    on_vacation = false;
+    vacation_on = false;
+    vacation_issue_number = 0;
     await octokit.getPinnedIssues({
       owner: owner,
       repo: repo,
@@ -19,7 +20,8 @@ async function run() {
       console.log(JSON.stringify(issues, undefined, 2))
       for (let issue of issues) {
         if (issue.state.toLowerCase() == "open" && issue.title.toLowerCase().includes('vacation')) {
-          on_vacation = true;
+          vacation_on = true;
+          vacation_issue_number = issue.number;
           break;
         }
       }
@@ -31,14 +33,20 @@ async function run() {
       repo: repo,
     });
 
-    if (on_vacation) {
-      console.log("🌴 Enjoy your vacation!");
-
+    if (vacation_on) {
       // Set repo interaction restrictions
       await octokit.interactions.setRestrictionsForRepo({
         owner: owner,
         repo: repo,
         limit: limit_group,
+      });
+
+      // Update ticket when going on vacation
+      octokit.issues.createComment({
+        owner: owner,
+        repo: repo,
+        issue_number: vacation_issue_number,
+        body: "🌴 Enjoy your vacation!",
       });
     }
   } catch (error) {
