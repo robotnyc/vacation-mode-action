@@ -19,9 +19,9 @@ async function run() {
       repo: repo,
     }).then(issues => {
       for (let issue of issues) {
-        if (issue.state.toLowerCase() == "open" && issue.title.toLowerCase().includes('vacation')) {
-          vacation_on = true;
+        if (issue.title.toLowerCase().includes('vacation')) {
           vacation_issue_number = issue.number;
+          vacation_on = issue.state.toLowerCase() == "open";
           break;
         }
       }
