@@ -33,9 +33,9 @@ Groups are defined as follows:
 
 ### `vacation-mode-activated`
 
-**Required** The comment when vacation mode is activated. It must include `vacation-mode-activated` in the text.
+**Required** The comment when vacation mode is activated. It must include `vacation-mode-activated` in the Markdown.
 
-The default is this happy puppy.
+The default is `![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)` of this happy puppy.
 
 ![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)
 
