@@ -3,11 +3,6 @@ const { Octokit } = require("@octokit/action");
 const MyOctokit = Octokit.plugin(
   require('octokit-pinned-issues')
 );
-const octokit = new MyOctokit();
-const MyOctokit2 = Octokit.plugin(
-  require('@octokit/plugin-rest-endpoint-methods')
-);
-const octokit2 = new MyOctokit2();
 
 async function run() {
   try {
@@ -30,7 +25,7 @@ async function run() {
     });
 
     // Always remove repo interaction restrictions first in order to reset the interaction limit 24 hour timer
-    await octokit2.interactions.removeRestrictionsForRepo({
+    await octokit.interactions.removeRestrictionsForRepo({
       owner: owner,
       repo: repo,
     });
@@ -39,7 +34,7 @@ async function run() {
       console.log("🌴 Enjoy your vacation!");
 
       // Set repo interaction restrictions
-      await octokit2.interactions.setRestrictionsForRepo({
+      await octokit.interactions.setRestrictionsForRepo({
         owner: owner,
         repo: repo,
         limit: limit_group,
