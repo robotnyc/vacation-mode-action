@@ -1,6 +1,7 @@
 const { Octokit } = require("@octokit/core");
 const MyOctokit = Octokit.plugin(
-  require('octokit-pinned-issues')
+  require("@octokit/plugin-rest-endpoint-methods"),
+  require('octokit-pinned-issues'),
 );const core = require('@actions/core');
 const github = require('@actions/github');
 
