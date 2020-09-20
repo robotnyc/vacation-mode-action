@@ -17,7 +17,6 @@ async function run() {
       owner: owner,
       repo: repo,
     }).then(issues => {
-      console.log(JSON.stringify(issues, undefined, 2))
       for (let issue of issues) {
         if (issue.state.toLowerCase() == "open" && issue.title.toLowerCase().includes('vacation')) {
           vacation_on = true;
@@ -49,12 +48,8 @@ async function run() {
         repo: repo,
         issue_number: vacation_issue_number,
       }).then(comments => {
-        console.log(JSON.stringify(comments, undefined, 2))
         for (let comment of comments.data) {
-          console.log(comment.body);
-          console.log(comment.user);
-          console.log(owner);
-          if (comment.user == owner && comment.body.includes('vacation-mode-activated')) {
+          if (comment.user == owner.login && comment.body.includes(vacation-mode-activated)) {
             vacation_comment_id = comment.id;
             break;
           }
