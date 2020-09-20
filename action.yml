@@ -8,6 +8,10 @@ inputs:
     description: 'Must be one of: existing_users, contributors_only, or collaborators_only'
     required: true
     default: 'collaborators_only'
+  vacation-mode-activated:
+    description: 'The comment when vacation mode is activated. It must include `vacation-mode-activated` in the text.'
+    required: true
+    default: '![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)'
   GITHUB_TOKEN:
     description: 'GitHub API personal access token with repo scope is needed to control repository interaction limits'
     required: true

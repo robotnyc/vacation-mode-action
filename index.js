@@ -9,6 +9,7 @@ async function run() {
   try {
     const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
     const limit_group = core.getInput('limit-group');
+    const vacation_mode_activated_comment = core.getInput('vacation-mode-activated');
 
     // Find open and pinned "vacation" issue
     vacation_on = false;
@@ -42,14 +43,13 @@ async function run() {
 
       // Check for existing vacation mode comment
       vacation_comment_id = 0;
-      const vacation_comment = '![vacation-mode-activated-dog](https://i.imgflip.com/18t5ch.jpg)'
       await octokit.issues.listComments({
         owner: owner,
         repo: repo,
         issue_number: vacation_issue_number,
       }).then(comments => {
         for (let comment of comments.data) {
-          if (comment.user == owner.login && comment.body.includes(vacation-mode-activated)) {
+          if (comment.user == owner.login && comment.body.includes('vacation-mode-activated')) {
             vacation_comment_id = comment.id;
             break;
           }
@@ -62,7 +62,7 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: vacation_issue_number,
-          body: vacation_comment,
+          body: vacation_mode_activated_comment,
         });
       }
     }

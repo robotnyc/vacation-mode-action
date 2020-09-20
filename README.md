@@ -23,16 +23,24 @@ _Know that your contributions are valuable and appreciated, so please subscribe 
 
 ### `limit-group`
 
+**Required** Must be one of: `existing_users`, `contributors_only`, or `collaborators_only`. Default `"collaborators_only"`.
+
 Groups are defined as follows:
 * Limit to **existing users**: Limits activity for users with accounts that are less than 24 hours old who do not have prior contributions and are not collaborators.
 * Limit to prior **contributors**: Limits activity for users who have not previously contributed and are not collaborators.
 * Limit to repository **collaborators**: Limits activity for users who do not have write access or are not collaborators.
 
-**Required** Must be one of: `existing_users`, `contributors_only`, or `collaborators_only`. Default `"collaborators_only"`.
+### `vacation-mode-activated`
+
+**Required** The comment when vacation mode is activated. It must include `vacation-mode-activated` in the text.
+
+The default is this happy puppy.
+
+![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)
 
 ### `personal-access-token`
 
-A personal access token is required because the GitHub API token generated for GitHub Actions does not include the `repo` scope necessary to control the repository interaction limits.
+**Required** A personal access token is required because the GitHub API token generated for GitHub Actions does not include the `repo` scope necessary to control the repository interaction limits.
 
 1. Go to https://github.com/settings/tokens and create a personal access token named `vacation-mode` (name is not important) with the `repo` scope.
 1. Copy the token value.
@@ -63,5 +71,6 @@ jobs:
     - uses: robotnyc/vacation-mode-action@v1
       with:
         limit-group: 'collaborators_only'
+        vacation-mode-activated: '![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)'
         GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```
