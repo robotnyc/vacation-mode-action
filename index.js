@@ -3,6 +3,7 @@ const { Octokit } = require("@octokit/action");
 const MyOctokit = Octokit.plugin(
   require('octokit-pinned-issues')
 );
+const octokit = new MyOctokit();
 
 async function run() {
   try {
