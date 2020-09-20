@@ -43,7 +43,7 @@ async function run() {
 
       // Check for existing vacation mode comment
       vacation_comment_id = 0;
-      const vacation_comment = '![dog-vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)'
+      const vacation_comment = '![vacation-mode-activated-dog](https://i.imgflip.com/18t5ch.jpg)'
       await octokit.issues.listComments({
         owner: owner,
         repo: repo,
@@ -52,7 +52,7 @@ async function run() {
         console.log(JSON.stringify(comments, undefined, 2))
         for (let comment of comments.data) {
           console.log(comment.body);
-          if (comment.user == owner && comment.body.includes(vacation_comment)) {
+          if (comment.user == owner && comment.body.includes('vacation-mode-activated')) {
             vacation_comment_id = comment.id;
             break;
           }
