@@ -1,19 +1,15 @@
-
-const { Octokit } = require("@octokit/core");
+const core = require('@actions/core');
+const { Octokit } = require("@octokit/action");
 const MyOctokit = Octokit.plugin(
   require("@octokit/plugin-rest-endpoint-methods"),
   require('octokit-pinned-issues'),
 );
-const core = require('@actions/core');
+const octokit = new MyOctokit();
 
 async function run() {
   try {
     const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
     const limit_group = core.getInput('limit-group');
-    const token = core.getInput('personal-access-token');
-    const octokit = new MyOctokit({
-      auth: token,
-    });
 
     // Find open and pinned "vacation" issue
     on_vacation = false;

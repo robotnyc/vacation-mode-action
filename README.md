@@ -63,5 +63,5 @@ jobs:
     - uses: robotnyc/vacation-mode-action@v1
       with:
         limit-group: 'collaborators_only'
-        personal-access-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```

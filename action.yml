@@ -8,7 +8,7 @@ inputs:
     description: 'Must be one of: existing_users, contributors_only, or collaborators_only'
     required: true
     default: 'collaborators_only'
-  personal-access-token:
+  GITHUB_TOKEN:
     description: 'GitHub API personal access token with repo scope is needed to control repository interaction limits'
     required: true
 runs:
