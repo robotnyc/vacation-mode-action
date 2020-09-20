@@ -27,7 +27,22 @@ async function run() {
       }
     });
 
-    // Always remove repo interaction restrictions first in order to reset the interaction limit 24 hour timer
+    // Check for existing vacation mode activated comment
+    vacation_comment_id = 0;
+    await octokit.issues.listComments({
+      owner: owner,
+      repo: repo,
+      issue_number: vacation_issue_number,
+    }).then(comments => {
+      for (let comment of comments.data) {
+        if (comment.user.login == owner && comment.body.includes('vacation-mode-activated')) {
+          vacation_comment_id = comment.id;
+          break;
+        }
+      }
+    });
+
+    // Always remove repository interaction restrictions first in order to reset the 24 hour timer
     await octokit.interactions.removeRestrictionsForRepo({
       owner: owner,
       repo: repo,
@@ -41,28 +56,22 @@ async function run() {
         limit: limit_group,
       });
 
-      // Check for existing vacation mode comment
-      vacation_comment_id = 0;
-      await octokit.issues.listComments({
-        owner: owner,
-        repo: repo,
-        issue_number: vacation_issue_number,
-      }).then(comments => {
-        for (let comment of comments.data) {
-          if (comment.user.login == owner && comment.body.includes('vacation-mode-activated')) {
-            vacation_comment_id = comment.id;
-            break;
-          }
-        }
-      });
-
       // Create new comment when activating vacation mode
       if (vacation_comment_id == 0) {
-        octokit.issues.createComment({
+        await octokit.issues.createComment({
           owner: owner,
           repo: repo,
           issue_number: vacation_issue_number,
           body: vacation_mode_activated_comment,
+        });
+      }
+    } else {
+      // Remove comment when vacation mode is deactivated
+      if (vacation_comment_id != 0) {
+        await octokit.issues.deleteComment({
+          owner: owner,
+          repo: repo,
+          comment_id: vacation_comment_id,
         });
       }
     }
