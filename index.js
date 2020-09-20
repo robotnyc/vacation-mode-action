@@ -1,12 +1,14 @@
+
 const { Octokit } = require("@octokit/core");
 const MyOctokit = Octokit.plugin(
   require("@octokit/plugin-rest-endpoint-methods"),
   require('octokit-pinned-issues'),
-);const core = require('@actions/core');
-const github = require('@actions/github');
+);
+const core = require('@actions/core');
 
 async function run() {
   try {
+    const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
     const limit_group = core.getInput('limit-group');
     const token = core.getInput('personal-access-token');
     const octokit = new MyOctokit({
@@ -16,8 +18,8 @@ async function run() {
     // Find open and pinned "vacation" issue
     on_vacation = false;
     await octokit.getPinnedIssues({
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
+      owner: owner,
+      repo: repo,
     }).then(issues => {
       console.log(JSON.stringify(issues, undefined, 2))
       for (let issue of issues) {
@@ -30,13 +32,8 @@ async function run() {
 
     // Always remove repo interaction restrictions first in order to reset the interaction limit 24 hour timer
     await octokit.interactions.removeRestrictionsForRepo({
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
-      mediaType: {
-        previews: [
-          'sombra'
-        ],
-      },
+      owner: owner,
+      repo: repo,
     });
 
     if (on_vacation) {
@@ -44,13 +41,8 @@ async function run() {
 
       // Set repo interaction restrictions
       await octokit.interactions.setRestrictionsForRepo({
-        owner: github.context.repo.owner,
-        repo: github.context.repo.repo,
-        mediaType: {
-          previews: [
-            'sombra'
-          ],
-        },
+        owner: owner,
+        repo: repo,
         limit: limit_group,
       });
     }
