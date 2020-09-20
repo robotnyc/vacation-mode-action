@@ -52,6 +52,8 @@ async function run() {
         console.log(JSON.stringify(comments, undefined, 2))
         for (let comment of comments.data) {
           console.log(comment.body);
+          console.log(comment.user);
+          console.log(owner);
           if (comment.user == owner && comment.body.includes('vacation-mode-activated')) {
             vacation_comment_id = comment.id;
             break;
