@@ -1,8 +1,10 @@
 const core = require('@actions/core');
-const { Octokit } = require("@octokit/action")
-  .plugin(require('@octokit/plugin-rest-endpoint-methods'))
-  .plugin(require('octokit-pinned-issues'));
-const octokit = new Octokit();
+const { Octokit } = require("@octokit/action");
+const MyOctokit = Octokit.plugin(
+  require('@octokit/plugin-rest-endpoint-methods'),
+  require('octokit-pinned-issues')
+);
+const octokit = new MyOctokit();
 
 async function run() {
   try {
