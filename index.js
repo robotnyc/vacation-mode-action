@@ -56,6 +56,7 @@ async function run() {
           }
         }
       });
+      console.log(vacation_comment_id);
 
       // Create new comment when activating vacation mode
       if (vacation_comment_id == 0) {
