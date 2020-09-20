@@ -49,6 +49,7 @@ async function run() {
         issue_number: vacation_issue_number,
       }).then(comments => {
         for (let comment of comments.data) {
+          console.log(comment);
           if (comment.user == owner.login && comment.body.includes('vacation-mode-activated')) {
             vacation_comment_id = comment.id;
             break;
