@@ -42,6 +42,8 @@ async function run() {
       });
 
       // Check for existing vacation mode comment
+      vacation_comment_id = 0;
+      const vacation_comment = '![dog-vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)'
       await octokit.issues.listComments({
         owner: owner,
         repo: repo,
@@ -49,30 +51,23 @@ async function run() {
       }).then(comments => {
         console.log(JSON.stringify(comments, undefined, 2))
         for (let comment of comments.data) {
-          // if (issue.state.toLowerCase() == "open" && issue.title.toLowerCase().includes('vacation')) {
-          //   vacation_on = true;
-          //   vacation_issue_number = issue.number;
-          //   break;
-          // }
+          console.log(comment.body);
+          if (comment.user == owner && comment.body.includes(vacation_comment)) {
+            vacation_comment_id = comment.id;
+            break;
+          }
         }
       });
 
-      // Update existing comment when going on vacation
-      // octokit.issues.updateComment({
-      //   owner,
-      //   repo,
-      //   comment_id,
-      //   body,
-      // });
-
-      // Create new comment when going on vacation
-      octokit.issues.createComment({
-        owner: owner,
-        repo: repo,
-        issue_number: vacation_issue_number,
-        body: "![dog-vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)",
-      });
-
+      // Create new comment when activating vacation mode
+      if (vacation_comment_id == 0) {
+        octokit.issues.createComment({
+          owner: owner,
+          repo: repo,
+          issue_number: vacation_issue_number,
+          body: vacation_comment,
+        });
+      }
     }
   } catch (error) {
     core.setFailed(error.message);
