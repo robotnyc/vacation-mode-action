@@ -42,19 +42,20 @@ async function run() {
       });
 
       // Check for existing vacation mode comment
-      const comments = await octokit.issues.listComments({
+      await octokit.issues.listComments({
         owner: owner,
         repo: repo,
         issue_number: vacation_issue_number,
+      }).then(comments => {
+        console.log(JSON.stringify(comments, undefined, 2))
+        for (let comment of comments.data) {
+          // if (issue.state.toLowerCase() == "open" && issue.title.toLowerCase().includes('vacation')) {
+          //   vacation_on = true;
+          //   vacation_issue_number = issue.number;
+          //   break;
+          // }
+        }
       });
-      console.log(JSON.stringify(comments, undefined, 2))
-      for (let comment of comments.data) {
-        // if (issue.state.toLowerCase() == "open" && issue.title.toLowerCase().includes('vacation')) {
-        //   vacation_on = true;
-        //   vacation_issue_number = issue.number;
-        //   break;
-        // }
-      }
 
       // Update existing comment when going on vacation
       // octokit.issues.updateComment({
