@@ -49,14 +49,12 @@ async function run() {
         issue_number: vacation_issue_number,
       }).then(comments => {
         for (let comment of comments.data) {
-          console.log(comment);
-          if (comment.user == owner.login && comment.body.includes('vacation-mode-activated')) {
+          if (comment.user.login == owner && comment.body.includes('vacation-mode-activated')) {
             vacation_comment_id = comment.id;
             break;
           }
         }
       });
-      console.log(vacation_comment_id);
 
       // Create new comment when activating vacation mode
       if (vacation_comment_id == 0) {
