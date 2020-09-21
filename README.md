@@ -33,9 +33,7 @@ Groups are defined as follows:
 
 ### `vacation-mode-activated`
 
-**Required** The comment when vacation mode is activated. It must include `vacation-mode-activated` in the Markdown.
-
-The default is `![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)` of this happy puppy.
+**Required** The comment when vacation mode is activated. It must include `vacation-mode-activated` in the Markdown. The default is `![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)` of this happy puppy.
 
 ![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)
 
@@ -54,9 +52,11 @@ For more information see the following documents
 
 ## Setup
 
-Add the following to `.github/workflows/main.yml`.
+Add the following to `.github/workflows/vacation-mode.yml`.
 
 ```yaml
+name: Vacation Mode
+
 on:
   # Run on all issue activity
   issues:
