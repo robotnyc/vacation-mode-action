@@ -2,7 +2,7 @@
 
 This GitHub Action helps maintainers of open source projects go on vacation and take mental health breaks by limiting community interactions within a repository. During this time, commenting, opening issues, or creating pull requests will be limited to a defined group.
 
-This GitHub Action avoids the 24 hour limit of the GitHub repository [interactions limit](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository) feature. This makes it easier for the project maintainers and more transparent for the community.
+This GitHub Action avoids the 24 hour limit of the GitHub repository [interactions limit](https://docs.github.com/en/github/building-a-strong-community/limiting-interactions-in-your-repository) feature. This makes it easier for the project maintainers to take longer breaks when needed and more transparent for the community.
 
 This GitHub Action does not make any changes that would generate a commit.
 
