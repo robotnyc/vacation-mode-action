@@ -29,18 +29,20 @@ async function run() {
 
     // Check for existing vacation mode activated comment
     vacation_comment_id = 0;
-    await octokit.issues.listComments({
-      owner: owner,
-      repo: repo,
-      issue_number: vacation_issue_number,
-    }).then(comments => {
-      for (let comment of comments.data) {
-        if (comment.user.login == owner && comment.body.includes('vacation-mode-activated')) {
-          vacation_comment_id = comment.id;
-          break;
+    if (vacation_issue_number != 0) {
+      await octokit.issues.listComments({
+        owner: owner,
+        repo: repo,
+        issue_number: vacation_issue_number,
+      }).then(comments => {
+        for (let comment of comments.data) {
+          if (comment.user.login == owner && comment.body.includes('vacation-mode-activated')) {
+            vacation_comment_id = comment.id;
+            break;
+          }
         }
-      }
-    });
+      });
+    }
 
     // Always remove repository interaction restrictions first in order to reset the 24 hour timer
     // and to handle the case when the vacation issue is unpinned (#3)
