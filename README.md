@@ -6,6 +6,8 @@ This GitHub Action avoids the 24 hour limit of the GitHub repository [interactio
 
 Inspired by [@mrdoob's](https://github.com/mrdoob), maintainer of [three.js](https://github.com/mrdoob/three.js), feature request https://twitter.com/mrdoob/status/1305989856368234496 .
 
+Demo: https://github.com/lucasrangit/vacation-mode-test/issues
+
 ## Usage
 
 1. Add the [setup code](#setup) to your repository workflow.
