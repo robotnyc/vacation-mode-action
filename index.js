@@ -43,6 +43,7 @@ async function run() {
     });
 
     // Always remove repository interaction restrictions first in order to reset the 24 hour timer
+    // and to handle the case when the vacation issue is unpinned (#3)
     await octokit.interactions.removeRestrictionsForRepo({
       owner: owner,
       repo: repo,
