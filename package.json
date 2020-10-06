@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/robotnyc/vacation-mode-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.5",
+    "@actions/core": "^1.2.6",
     "@octokit/action": "^3.1.1",
     "@octokit/core": "^3.1.2",
     "@octokit/plugin-rest-endpoint-methods": "^4.2.0",
