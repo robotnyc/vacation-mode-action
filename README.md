@@ -16,8 +16,11 @@ To see an example of what "vacation mode" looks like when activated, check out h
 1. Create an issue with a title that contains "vacation". For example, "🌴 On Vacation Next Week".
 1. Pin the issue to activate the action and so your community can clearly see that you are on vacation.
 1. Include an "out-of-office note" in the issue description explaining to your community why their interactions will be limited. See below for an example.
-1. Close then issue when you are back from vacation to deactivate vacation mode.
+1. Close the issue when you are back from vacation to deactivate vacation mode.
+   * Note: If your vacation is longer than 60 days and your repository is inactive, GitHub will disable the action requiring you to manually re-enable it.
 1. Unpin the issue to deactivate the action.
+
+## Sample Text
 
 _Dear community, as the maintainer of this project, I have put the repository in "vacation mode" so that I can take a much needed and deserved break without worrying about tasks piling up while I recharge. I hope you can understand the need to take this action and not just "turn off notifications". Anyone who has experienced a company-wide shutdown would understand, that it's much easier to disconnect from work when everyone does at the same time._
 
