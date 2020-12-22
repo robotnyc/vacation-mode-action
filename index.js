@@ -57,6 +57,7 @@ async function run() {
         owner: owner,
         repo: repo,
         limit: limit_group,
+        expiry: 'six_months',
       });
 
       // Create new comment when activating vacation mode
