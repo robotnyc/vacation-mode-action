@@ -75,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Update Vacation Mode
     steps:
-    - uses: robotnyc/vacation-mode-action@v1
+    - uses: robotnyc/vacation-mode-action@v2
       with:
         limit-group: 'collaborators_only'
         vacation-mode-activated: '![vacation-mode-activated](https://i.imgflip.com/18t5ch.jpg)'
